@@ -1,13 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'commitedashboard.dart';
+import 'commiteresidents.dart';
+import 'custom_card.dart'; // Import the custom card widget
 import 'homeownerhomepage.dart';
 
 class CommitteeHomePage extends StatelessWidget {
+  const CommitteeHomePage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(200.0),
+        preferredSize: const Size.fromHeight(200.0),
         child: AppBar(
           backgroundColor: Colors.transparent,
           elevation: 0,
@@ -15,7 +21,7 @@ class CommitteeHomePage extends StatelessWidget {
           flexibleSpace: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 5.0),
             child: Container(
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 color: Color(0xFF3981D5),
                 borderRadius: BorderRadius.vertical(
                   bottom: Radius.circular(16),
@@ -35,19 +41,17 @@ class CommitteeHomePage extends StatelessWidget {
                           children: [
                             Text(
                               'condominium',
-                              style: TextStyle(
-                                fontFamily: 'Roboto',
+                              style: GoogleFonts.sourceSans3(
                                 color: Colors.white,
-                                fontSize: 18,
-                                fontWeight: FontWeight.bold,
+                                fontSize: 12,
                               ),
                             ),
                             Text(
-                              'BUlbula 40/60, Block 07',
-                              style: TextStyle(
-                                fontFamily: 'Roboto',
-                                color: Colors.white70,
-                                fontSize: 14,
+                              'Bulbula 40/60, Block 07',
+                              style: GoogleFonts.sourceSans3(
+                                color: Colors.white,
+                                fontSize: 12,
+                                fontWeight: FontWeight.bold,
                               ),
                             ),
                           ],
@@ -60,43 +64,51 @@ class CommitteeHomePage extends StatelessWidget {
                               children: [
                                 Text(
                                   'Hello,',
-                                  style: TextStyle(
-                                    fontFamily: 'Roboto',
+                                  style: GoogleFonts.sourceSans3(
                                     color: Colors.white,
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.bold,
+                                    fontSize: 12,
                                   ),
                                 ),
                                 Text(
                                   'Samuel Z.',
-                                  style: TextStyle(
-                                    fontFamily: 'Roboto',
-                                    color: Colors.white70,
-                                    fontSize: 14,
+                                  style: GoogleFonts.sourceSans3(
+                                    color: Colors.white,
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.bold,
                                   ),
                                 ),
                               ],
                             ),
-                            SizedBox(width: 2.0),
-                            IconButton(
-                              icon: Icon(
-                                  Icons.account_circle_outlined, // Updated icon
-                                  color: Colors.white,
-                                  size: 36.0),
-                              onPressed: () {
-                                // Handle profile button action here
-                              },
+                            const SizedBox(width: 2.0),
+                            Container(
+                              width: 36.0,
+                              height: 36.0,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(8.0),
+                                image: const DecorationImage(
+                                  image: AssetImage('assets/DSC.JPG'),
+                                  fit: BoxFit.cover,
+                                ),
+                              ),
+                              child: Material(
+                                color: Colors.transparent,
+                                child: InkWell(
+                                  onTap: () {
+                                    print("image clicked");
+                                  },
+                                  borderRadius: BorderRadius.circular(8.0),
+                                ),
+                              ),
                             ),
                           ],
                         ),
                       ],
                     ),
-                    SizedBox(height: 20.0),
+                    const SizedBox(height: 20.0),
                     Text(
                       'COMMITTEE HOME PAGE',
-                      style: TextStyle(
-                        fontFamily: 'Roboto',
-                        fontSize: 30.0,
+                      style: GoogleFonts.sourceSans3(
+                        fontSize: 25.0,
                         fontWeight: FontWeight.bold,
                         color: Colors.white,
                       ),
@@ -109,66 +121,61 @@ class CommitteeHomePage extends StatelessWidget {
         ),
       ),
       body: Padding(
-        padding: EdgeInsets.only(top: 20.0, left: 20, right: 20),
-        child: GridView.count(
-          crossAxisCount: 2,
-          crossAxisSpacing: 30.0,
-          mainAxisSpacing: 20.0,
+        padding: const EdgeInsets.only(top: 20.0, left: 20, right: 20),
+        child: CustomCard(
           children: [
-            _buildCard(
-              context,
-              icon: Icons.dashboard_outlined, // Updated icon
+            CustomCardItem(
+              imagePath: 'assets/icons/dashboard.png',
               title: 'Dashboard',
               description: 'Overview of building details',
               onTap: () {
-                print('Dashboard clicked');
+                print('Dashboard tapped');
                 Navigator.push(
                   context,
-                  MaterialPageRoute(
-                      builder: (context) =>
-                          HomeownerHomePage()), // Replace LoginScreen with your actual screen widget
+                  MaterialPageRoute(builder: (context) => CommittedDashboard()),
+                  //builder: (context) => const HomeownerHomePage()),
                 );
               },
             ),
-            _buildCard(
-              context,
-              icon: Icons.people_outline, // Updated icon
+            CustomCardItem(
+              imagePath: 'assets/icons/residents.png',
               title: 'Residents',
               description: 'View resident information',
               onTap: () {
                 print('Residents clicked');
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => CommiteResidents()),
+                  //builder: (context) => const HomeownerHomePage()),
+                );
               },
             ),
-            _buildCard(
-              context,
-              icon: Icons.home_outlined, // Updated icon
+            CustomCardItem(
+              imagePath: 'assets/icons/home_owners.png',
               title: 'Home Owners',
               description: 'Details of home owners',
               onTap: () {
                 print('Home Owners clicked');
               },
             ),
-            _buildCard(
-              context,
-              icon: Icons.attach_money_outlined, // Updated icon
+            CustomCardItem(
+              imagePath: 'assets/icons/billings.png',
               title: 'Billings',
               description: 'Billing information',
               onTap: () {
                 print('Billings clicked');
               },
             ),
-            _buildCard(
-              context,
-              icon: Icons.bar_chart_outlined, // Updated icon
+            CustomCardItem(
+              imagePath: 'assets/icons/chart.png',
               title: 'Chart of Bills',
               description: 'Visualize billing data',
               onTap: () {
                 print('Chart of Bills clicked');
               },
             ),
-            _buildCard(
-              context,
-              icon: Icons.report_problem_outlined, // Updated icon
+            CustomCardItem(
+              imagePath: 'assets/icons/complaints.png',
               title: 'Complaints',
               description: 'Submit complaints',
               onTap: () {
@@ -176,75 +183,6 @@ class CommitteeHomePage extends StatelessWidget {
               },
             ),
           ],
-        ),
-      ),
-    );
-  }
-
-  Widget _buildCard(
-    BuildContext context, {
-    required IconData icon,
-    required String title,
-    required String description,
-    required Function onTap,
-  }) {
-    return GestureDetector(
-      onTap: () => onTap(),
-      child: Container(
-        width: 160.0,
-        height: 166.0,
-        decoration: BoxDecoration(
-          boxShadow: [
-            BoxShadow(
-              color: Colors.black.withOpacity(0.4),
-              blurRadius: 8.0,
-              spreadRadius: -5,
-              offset: Offset(0, 8),
-            ),
-          ],
-        ),
-        child: Card(
-          elevation: 0,
-          color: Colors.white,
-          shape: RoundedRectangleBorder(
-            side: BorderSide(
-              color: Color(0xFF3981D5),
-              width: 1.0,
-            ),
-            borderRadius: BorderRadius.circular(16.0),
-          ),
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Icon(
-                  icon,
-                  size: 48.0,
-                  color: Color(0xFF3981D5),
-                ),
-                SizedBox(height: 8.0),
-                Text(
-                  title,
-                  style: TextStyle(
-                    fontFamily: 'Roboto',
-                    fontSize: 20.0,
-                    fontWeight: FontWeight.bold,
-                    color: Color(0xFF3981D5),
-                  ),
-                ),
-                SizedBox(height: 8.0),
-                Text(
-                  description,
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    fontFamily: 'Raleway',
-                    fontSize: 12.0,
-                  ),
-                ),
-              ],
-            ),
-          ),
         ),
       ),
     );

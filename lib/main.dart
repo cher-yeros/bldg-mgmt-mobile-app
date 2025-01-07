@@ -3,7 +3,7 @@ import 'splashscreen.dart';
 //import 'package:flutter_svg/flutter_svg.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -11,7 +11,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
       home: GradientBackgroundScreen(),
     );
@@ -40,7 +40,7 @@ class GradientBackgroundScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Spacer(),
+            const Spacer(),
             Padding(
               padding: const EdgeInsets.only(
                   top: 1.0, bottom: 20), // Adjust this value as needed
@@ -92,11 +92,12 @@ class GradientBackgroundScreen extends StatelessWidget {
                   print('Button Pressed');
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => SplashScreen()),
+                    MaterialPageRoute(
+                        builder: (context) => const SplashScreen()),
                   );
                 },
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Color(0xFF4CAF50), // Button color
+                  backgroundColor: const Color(0xFF4CAF50), // Button color
                   padding:
                       const EdgeInsets.symmetric(horizontal: 30, vertical: 12),
                   shape: RoundedRectangleBorder(
@@ -104,7 +105,7 @@ class GradientBackgroundScreen extends StatelessWidget {
                   ),
                 ),
                 child: const Text(
-                  'Start Now',
+                  'START NOW',
                   style: TextStyle(
                     color: Color(0xFF1C3D5A), // Text color
                     fontSize: 18,

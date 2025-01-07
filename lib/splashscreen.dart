@@ -2,31 +2,35 @@ import 'package:flutter/material.dart';
 import 'package:sysapp/main.dart';
 import 'registerscreen.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       home: SplashScreen(),
     );
   }
 }
 
 class SplashScreen extends StatefulWidget {
+  const SplashScreen({super.key});
+
   @override
   _SplashScreenState createState() => _SplashScreenState();
 }
 
 class _SplashScreenState extends State<SplashScreen> {
-  PageController _pageController = PageController();
+  final PageController _pageController = PageController();
   int _currentPage = 0;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           gradient: LinearGradient(
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
@@ -74,8 +78,8 @@ class _SplashScreenState extends State<SplashScreen> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: List.generate(3, (index) {
                   return AnimatedContainer(
-                    duration: Duration(milliseconds: 300),
-                    margin: EdgeInsets.symmetric(horizontal: 5),
+                    duration: const Duration(milliseconds: 300),
+                    margin: const EdgeInsets.symmetric(horizontal: 5),
                     height: 8,
                     width: _currentPage == index ? 24 : 8,
                     decoration: BoxDecoration(
@@ -100,13 +104,9 @@ class _SplashScreenState extends State<SplashScreen> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => RegisterScreen()),
+                                builder: (context) => const RegisterScreen()),
                           );
                         },
-                        child: Text(
-                          'Get Started',
-                          style: TextStyle(color: Colors.white),
-                        ),
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Colors.green,
                           padding: const EdgeInsets.symmetric(
@@ -114,6 +114,10 @@ class _SplashScreenState extends State<SplashScreen> {
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(30),
                           ),
+                        ),
+                        child: const Text(
+                          'Get Started',
+                          style: TextStyle(color: Colors.white),
                         ),
                       ),
                     )
@@ -126,37 +130,34 @@ class _SplashScreenState extends State<SplashScreen> {
                               context,
                               MaterialPageRoute(
                                   builder: (context) =>
-                                      GradientBackgroundScreen()),
+                                      const GradientBackgroundScreen()),
                             );
                           },
-                          child: Text(
-                            'Skip',
-                            style: TextStyle(color: Colors.white),
-                          ),
                           style: ElevatedButton.styleFrom(
                             backgroundColor: Colors.transparent,
                             shadowColor: Colors.transparent,
-                            side: BorderSide(color: Colors.green, width: 2),
+                            side:
+                                const BorderSide(color: Colors.green, width: 2),
                             padding: const EdgeInsets.symmetric(
                                 horizontal: 60, vertical: 12),
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(30),
                             ),
                           ),
+                          child: const Text(
+                            'Skip',
+                            style: TextStyle(color: Colors.white),
+                          ),
                         ),
                         ElevatedButton(
                           onPressed: () {
                             if (_currentPage < 2) {
                               _pageController.nextPage(
-                                duration: Duration(milliseconds: 300),
+                                duration: const Duration(milliseconds: 300),
                                 curve: Curves.easeInOut,
                               );
                             }
                           },
-                          child: Text(
-                            'Next',
-                            style: TextStyle(color: Colors.white),
-                          ),
                           style: ElevatedButton.styleFrom(
                             backgroundColor: Colors.green,
                             padding: const EdgeInsets.symmetric(
@@ -164,6 +165,10 @@ class _SplashScreenState extends State<SplashScreen> {
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(30),
                             ),
+                          ),
+                          child: const Text(
+                            'Next',
+                            style: TextStyle(color: Colors.white),
                           ),
                         ),
                       ],
@@ -185,25 +190,25 @@ class _SplashScreenState extends State<SplashScreen> {
           height: 150, // Set height to make image smaller
           child: Image.asset(imagePath),
         ),
-        SizedBox(height: 40),
+        const SizedBox(height: 40),
         Text(
           title,
-          style: TextStyle(
+          style: const TextStyle(
             fontSize: 24,
             fontWeight: FontWeight.bold,
             color: Colors.white,
           ),
         ),
-        SizedBox(height: 10),
+        const SizedBox(height: 10),
         Text(
           subtitle,
-          style: TextStyle(
+          style: const TextStyle(
             fontSize: 16,
             color: Colors.white70,
           ),
           textAlign: TextAlign.center,
         ),
-        if (isFirstPage) SizedBox(height: 20),
+        if (isFirstPage) const SizedBox(height: 20),
       ],
     );
   }

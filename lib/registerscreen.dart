@@ -4,11 +4,13 @@ import 'loginscreen.dart';
 import 'committeehomepage.dart';
 
 class RegisterScreen extends StatelessWidget {
+  const RegisterScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           gradient: LinearGradient(
             colors: [
               Color(0xFF4A90E2), // Start color
@@ -31,8 +33,8 @@ class RegisterScreen extends StatelessWidget {
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 40.0),
+                      const Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 40.0),
                         child: Row(
                           children: [
                             Icon(Icons.phone,
@@ -49,48 +51,49 @@ class RegisterScreen extends StatelessWidget {
                           ],
                         ),
                       ),
-                      SizedBox(height: 8), // Space between label and text field
+                      const SizedBox(
+                          height: 8), // Space between label and text field
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 40.0),
-                        child: Container(
+                        child: SizedBox(
                           width:
                               290, // Width set to 290 as per your Figma design
                           height: 40, // Set height to 40
                           child: TextField(
                             decoration: InputDecoration(
                               hintText: 'Enter your phone number',
-                              hintStyle: TextStyle(
+                              hintStyle: const TextStyle(
                                 color: Color(
                                     0xFF1C3D5A), // Updated placeholder color
                                 fontSize: 14, // Placeholder text size
                                 // Removed fontWeight for normal weight
                               ),
                               filled: true,
-                              fillColor:
-                                  Color(0xFFF1F3F5), // Updated background color
+                              fillColor: const Color(
+                                  0xFFF1F3F5), // Updated background color
                               border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(
                                     10), // Set border radius to 10
-                                borderSide: BorderSide(
+                                borderSide: const BorderSide(
                                     color: Colors.green,
                                     width: 1), // Green border
                               ),
                               focusedBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(
                                     10), // Set border radius to 10
-                                borderSide: BorderSide(
+                                borderSide: const BorderSide(
                                     color: Colors.green,
                                     width: 2), // Thicker green border on focus
                               ),
                               enabledBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(
                                     10), // Set border radius to 10
-                                borderSide: BorderSide(
+                                borderSide: const BorderSide(
                                     color: Colors.green,
                                     width: 1), // Green border when enabled
                               ),
                             ),
-                            style: TextStyle(
+                            style: const TextStyle(
                                 color: Colors
                                     .white), // Text color inside the field
                             keyboardType: TextInputType.phone,
@@ -101,7 +104,7 @@ class RegisterScreen extends StatelessWidget {
                       ),
                     ],
                   ),
-                  SizedBox(
+                  const SizedBox(
                       height:
                           20), // Increased space between fields (was 20, now 60)
 
@@ -109,8 +112,8 @@ class RegisterScreen extends StatelessWidget {
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 40.0),
+                      const Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 40.0),
                         child: Row(
                           children: [
                             Icon(Icons.lock,
@@ -126,48 +129,49 @@ class RegisterScreen extends StatelessWidget {
                           ],
                         ),
                       ),
-                      SizedBox(height: 8), // Space between label and text field
+                      const SizedBox(
+                          height: 8), // Space between label and text field
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 40.0),
-                        child: Container(
+                        child: SizedBox(
                           width:
                               290, // Width set to 290 as per your Figma design
                           height: 40, // Set height to 40
                           child: TextField(
                             decoration: InputDecoration(
                               hintText: 'Enter your password',
-                              hintStyle: TextStyle(
+                              hintStyle: const TextStyle(
                                 color: Color(
                                     0xFF1C3D5A), // Updated placeholder color
                                 fontSize: 14, // Placeholder text size
                                 // Removed fontWeight for normal weight
                               ),
                               filled: true,
-                              fillColor:
-                                  Color(0xFFF1F3F5), // Updated background color
+                              fillColor: const Color(
+                                  0xFFF1F3F5), // Updated background color
                               border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(
                                     10), // Set border radius to 10
-                                borderSide: BorderSide(
+                                borderSide: const BorderSide(
                                     color: Colors.green,
                                     width: 1), // Green border
                               ),
                               focusedBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(
                                     10), // Set border radius to 10
-                                borderSide: BorderSide(
+                                borderSide: const BorderSide(
                                     color: Colors.green,
                                     width: 2), // Thicker green border on focus
                               ),
                               enabledBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(
                                     10), // Set border radius to 10
-                                borderSide: BorderSide(
+                                borderSide: const BorderSide(
                                     color: Colors.green,
                                     width: 1), // Green border when enabled
                               ),
                             ),
-                            style: TextStyle(
+                            style: const TextStyle(
                                 color: Colors
                                     .white), // Text color inside the field
                             obscureText: true,
@@ -178,7 +182,7 @@ class RegisterScreen extends StatelessWidget {
                       ),
                     ],
                   ),
-                  SizedBox(
+                  const SizedBox(
                       height:
                           60), // Increased space between fields and button (was 40, now 80)
 
@@ -195,18 +199,19 @@ class RegisterScreen extends StatelessWidget {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => CommitteeHomePage()),
+                                builder: (context) =>
+                                    const CommitteeHomePage()),
                           );
                         },
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Colors.green,
-                          side: BorderSide(
+                          side: const BorderSide(
                               color: Colors.green, width: 2), // Green border
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(50),
                           ),
                         ),
-                        child: Text(
+                        child: const Text(
                           'Register',
                           style: TextStyle(
                             fontSize: 16,
@@ -218,13 +223,13 @@ class RegisterScreen extends StatelessWidget {
                       ),
                     ),
                   ),
-                  SizedBox(height: 20),
+                  const SizedBox(height: 20),
 
                   // Login text
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text(
+                      const Text(
                         "Already have an account? ",
                         style: TextStyle(color: Colors.white),
                       ),
@@ -235,10 +240,10 @@ class RegisterScreen extends StatelessWidget {
                             context,
                             MaterialPageRoute(
                                 builder: (context) =>
-                                    LoginScreen()), // Replace LoginScreen with your actual screen widget
+                                    const LoginScreen()), // Replace LoginScreen with your actual screen widget
                           );
                         },
-                        child: Text(
+                        child: const Text(
                           "Login",
                           style: TextStyle(
                             color: Colors.green,
